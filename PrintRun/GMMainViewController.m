@@ -84,12 +84,26 @@ UIView *testView;
     //縦方向のみ移動
     UIView *targetView = sender.view;
     CGPoint p = [sender translationInView:targetView];//dragした後の(targetViewからの相対)位置
-    CGPoint movedPoint = CGPointMake(targetView.center.x + p.x,
+    CGPoint movedPoint = CGPointMake(targetView.center.x,
                                      targetView.center.y + p.y);//dragした後の絶対位置
     targetView.center = movedPoint;//dragした後の絶対位置にtargetViewを移す
     [sender setTranslation:CGPointZero inView:targetView];//targetViewの中心(メモリ)を現在位置にリセット
-
     
+    //when touch up:http://stackoverflow.com/questions/6467638/detecting-pan-gesture-end
+    if(sender.state == UIGestureRecognizerStateEnded)
+    {
+        //All fingers are lifted.
+        NSLog(@"touched up");
+        
+        //現在位置(タッチアップした位置)を検出してアニメーション実行
+        //animation
+        [UIView animateWithDuration:0.85f
+                         animations:^{
+                            targetView.center =
+                             CGPointMake(targetView.center.x,
+                                         targetView.center.y - self.view.bounds.size.height);
+                         }];
+    }
 }
 
 @end
