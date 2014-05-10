@@ -24,7 +24,11 @@ UIView *view2;//お札2
 UIView *originalView;
 CGRect originalRect;//original-location
 double interval;
+int counter;
 
+
+UIImageView *viewYen;
+UILabel *labelCounter;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,14 +40,21 @@ double interval;
     return self;
 }
 
+-(void)initialization{
+    counter = 0;
+    
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSLog(@"start view did load");
     
+    [self initialization];
     //アニメーションインターバル
     interval = 0.3f;
+    
+    
     originalRect = CGRectMake(100, 100, 200, 300);
     
     self.view.backgroundColor = [UIColor whiteColor];
@@ -58,14 +69,14 @@ double interval;
     view1 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"money_1th.png"]];
     view1.frame = originalRect;
     view1.userInteractionEnabled = YES;
-    view1.tag = 1;
+    view1.tag = 1;//1000円札のときは1、10000円札のときは2
     [self.view addSubview:view1];
     
     
     view2 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"money_1th.png"]];
     view2.frame = originalRect;
     view2.userInteractionEnabled = YES;
-    view2.tag = 2;
+    view2.tag = 3;//1000円札のときは3、10000円札のときは4
     [self.view addSubview:view2];
     
     
@@ -78,6 +89,23 @@ double interval;
                                         initWithTarget:self action:@selector(drag:)];
     panGest2.delegate = self;
     [view2 addGestureRecognizer:panGest2];
+    
+    
+    
+    viewYen = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"icon_yen.png"]];
+    viewYen.frame = CGRectMake(50, 10, 50, 50);
+    [self.view addSubview:viewYen];
+    
+    labelCounter = [[UILabel alloc]initWithFrame:CGRectMake(viewYen.frame.origin.x + viewYen.bounds.size.width,
+                                                            viewYen.frame.origin.y,
+                                                            250, viewYen.bounds.size.height)];
+    labelCounter.textColor = [UIColor grayColor];
+    labelCounter.text = [NSString stringWithFormat:@"%d", counter];//formatで整えてもよい
+    labelCounter.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:labelCounter];
+    
+    
+    
     
 }
 
@@ -113,9 +141,19 @@ double interval;
     
     //when touch up:http://stackoverflow.com/questions/6467638/detecting-pan-gesture-end
     if(sender.state == UIGestureRecognizerStateEnded)
-    {
+    {//本当は位置判定して閾値以上ならカウント、以下ならカウントしないにする
         //All fingers are lifted.
         NSLog(@"touched up at interval=%f", interval);
+        
+        //カウンター発動
+        
+        if(targetView.tag % 2 == 1){
+            counter += 1000;
+            
+        }else{
+            counter += 10000;
+        }
+        labelCounter.text = [NSString stringWithFormat:@"%d", counter];
         
         //現在位置(タッチアップした位置)を検出してアニメーション実行
         //animation
@@ -130,17 +168,28 @@ double interval;
                          completion:^(BOOL finished){
                              if(finished){
                                  targetView.frame = originalRect;
-                                 if(arc4random() % 5 == 0){
-                                     ((UIImageView *)targetView).image = [UIImage imageNamed:@"money_10th.png"];
-                                 }else{
-                                     ((UIImageView *)targetView).image = [UIImage imageNamed:@"money_1th.png"];
-                                 }
                                  
                                  //アニメーション終了したビューでない方を最前面に送る
-                                 if(targetView.tag == 1){
+                                 if(targetView.tag < 3){//view1のアニメーションが終了したときview2を最前面に
                                      [self.view bringSubviewToFront:view2];
-                                 }else{
+                                 }else{//view2のアニメーションが終了したときview1を最前面に
                                      [self.view bringSubviewToFront:view1];
+                                 }
+                                 
+                                 //数値を最前面に
+                                 [self.view bringSubviewToFront:labelCounter];
+                                 
+                                 
+                                 
+                                 //1000円札の時でかつ、５回に１回程度10000万円にする
+                                 if(arc4random() % 5 == 0 && ((UIImageView *)targetView).tag % 2 == 1){
+                                     ((UIImageView *)targetView).image = [UIImage imageNamed:@"money_10th.png"];
+                                     ((UIImageView *)targetView).tag ++;//= ((UIImageView *)targetView).tag + 1;
+                                 }else{
+                                     ((UIImageView *)targetView).image = [UIImage imageNamed:@"money_1th.png"];
+                                     if(((UIImageView *)targetView).tag % 2 == 0){//１万円札のときだけマイナス１
+                                         ((UIImageView *)targetView).tag --;
+                                     }
                                  }
                              }
                          }];
