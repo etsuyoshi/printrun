@@ -19,8 +19,8 @@
 
 @implementation GMMainViewController
 
-UIView *view1;
-UIView *view2;
+UIView *view1;//お札1
+UIView *view2;//お札2
 UIView *originalView;
 CGRect originalRect;//original-location
 double interval;
@@ -50,19 +50,18 @@ double interval;
     
     
     originalView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"money_roll.png"]];
-    originalView.frame = CGRectMake(100, 100, 150, 250);
+    originalView.frame = originalRect;
     [self.view addSubview:originalView];
     
     
     
-//    view1 = [[UIView alloc]initWithFrame:CGRectMake(100, 100, 150, 250)];
     view1 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"money_1th.png"]];
     view1.frame = originalRect;
     view1.userInteractionEnabled = YES;
     view1.tag = 1;
     [self.view addSubview:view1];
     
-//    view2 = [[UIView alloc]initWithFrame:CGRectMake(100, 100, 150, 250)];
+    
     view2 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"money_1th.png"]];
     view2.frame = originalRect;
     view2.userInteractionEnabled = YES;
@@ -135,6 +134,13 @@ double interval;
                                      ((UIImageView *)targetView).image = [UIImage imageNamed:@"money_10th.png"];
                                  }else{
                                      ((UIImageView *)targetView).image = [UIImage imageNamed:@"money_1th.png"];
+                                 }
+                                 
+                                 //アニメーション終了したビューでない方を最前面に送る
+                                 if(targetView.tag == 1){
+                                     [self.view bringSubviewToFront:view2];
+                                 }else{
+                                     [self.view bringSubviewToFront:view1];
                                  }
                              }
                          }];
