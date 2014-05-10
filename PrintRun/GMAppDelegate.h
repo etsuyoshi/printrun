@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GMMainViewController.h"
 
 @interface GMAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) GMMainViewController *gmViewController; // 追加
+
 
 @end
