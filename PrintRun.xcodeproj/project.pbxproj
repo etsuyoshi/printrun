@@ -20,9 +20,9 @@
 		2A5CF104191DB3B10040A7E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A5CF102191DB3B10040A7E0 /* InfoPlist.strings */; };
 		2A5CF106191DB3B10040A7E0 /* PrintRunTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5CF105191DB3B10040A7E0 /* PrintRunTests.m */; };
 		2A5CF111191DB43F0040A7E0 /* GMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5CF110191DB43F0040A7E0 /* GMMainViewController.m */; };
-		2A5CF115191DC0450040A7E0 /* money_1th.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A5CF113191DC0450040A7E0 /* money_1th.png */; };
-		2A5CF116191DC0450040A7E0 /* money_10th.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A5CF114191DC0450040A7E0 /* money_10th.png */; };
-		2A5CF118191DC46E0040A7E0 /* money_roll.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A5CF117191DC46E0040A7E0 /* money_roll.png */; };
+		2A5CF11C191DD24A0040A7E0 /* money_1th.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A5CF119191DD24A0040A7E0 /* money_1th.png */; };
+		2A5CF11E191DD24A0040A7E0 /* money_roll.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A5CF11B191DD24A0040A7E0 /* money_roll.png */; };
+		2A5CF120191DD2D40040A7E0 /* money_10th.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A5CF11F191DD2D40040A7E0 /* money_10th.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,9 +54,9 @@
 		2A5CF105191DB3B10040A7E0 /* PrintRunTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrintRunTests.m; sourceTree = "<group>"; };
 		2A5CF10F191DB43F0040A7E0 /* GMMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMMainViewController.h; sourceTree = "<group>"; };
 		2A5CF110191DB43F0040A7E0 /* GMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMMainViewController.m; sourceTree = "<group>"; };
-		2A5CF113191DC0450040A7E0 /* money_1th.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = money_1th.png; sourceTree = "<group>"; };
-		2A5CF114191DC0450040A7E0 /* money_10th.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = money_10th.png; sourceTree = "<group>"; };
-		2A5CF117191DC46E0040A7E0 /* money_roll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = money_roll.png; sourceTree = "<group>"; };
+		2A5CF119191DD24A0040A7E0 /* money_1th.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = money_1th.png; sourceTree = "<group>"; };
+		2A5CF11B191DD24A0040A7E0 /* money_roll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = money_roll.png; sourceTree = "<group>"; };
+		2A5CF11F191DD2D40040A7E0 /* money_10th.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = money_10th.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,9 +159,9 @@
 		2A5CF112191DC0380040A7E0 /* image */ = {
 			isa = PBXGroup;
 			children = (
-				2A5CF117191DC46E0040A7E0 /* money_roll.png */,
-				2A5CF113191DC0450040A7E0 /* money_1th.png */,
-				2A5CF114191DC0450040A7E0 /* money_10th.png */,
+				2A5CF11F191DD2D40040A7E0 /* money_10th.png */,
+				2A5CF119191DD24A0040A7E0 /* money_1th.png */,
+				2A5CF11B191DD24A0040A7E0 /* money_roll.png */,
 			);
 			name = image;
 			sourceTree = "<group>";
@@ -244,9 +244,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A5CF0F3191DB3B10040A7E0 /* Images.xcassets in Resources */,
-				2A5CF116191DC0450040A7E0 /* money_10th.png in Resources */,
-				2A5CF118191DC46E0040A7E0 /* money_roll.png in Resources */,
-				2A5CF115191DC0450040A7E0 /* money_1th.png in Resources */,
+				2A5CF11E191DD24A0040A7E0 /* money_roll.png in Resources */,
+				2A5CF11C191DD24A0040A7E0 /* money_1th.png in Resources */,
+				2A5CF120191DD2D40040A7E0 /* money_10th.png in Resources */,
 				2A5CF0DF191DB3B10040A7E0 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

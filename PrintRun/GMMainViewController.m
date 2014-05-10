@@ -22,7 +22,8 @@
 UIView *view1;
 UIView *view2;
 UIView *originalView;
-double speed;
+CGRect originalRect;//original-location
+double interval;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -41,6 +42,10 @@ double speed;
     // Do any additional setup after loading the view.
     NSLog(@"start view did load");
     
+    //アニメーションインターバル
+    interval = 0.3f;
+    originalRect = CGRectMake(100, 100, 200, 300);
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     
@@ -50,13 +55,17 @@ double speed;
     
     
     
-    view1 = [[UIView alloc]initWithFrame:CGRectMake(100, 100, 150, 250)];
-    view1.backgroundColor = [UIColor grayColor];
+//    view1 = [[UIView alloc]initWithFrame:CGRectMake(100, 100, 150, 250)];
+    view1 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"money_1th.png"]];
+    view1.frame = originalRect;
+    view1.userInteractionEnabled = YES;
     view1.tag = 1;
     [self.view addSubview:view1];
     
-    view2 = [[UIView alloc]initWithFrame:CGRectMake(100, 100, 150, 250)];
-    view2.backgroundColor = [UIColor redColor];
+//    view2 = [[UIView alloc]initWithFrame:CGRectMake(100, 100, 150, 250)];
+    view2 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"money_1th.png"]];
+    view2.frame = originalRect;
+    view2.userInteractionEnabled = YES;
     view2.tag = 2;
     [self.view addSubview:view2];
     
@@ -97,6 +106,7 @@ double speed;
     UIView *targetView = sender.view;
     CGPoint p = [sender translationInView:targetView];//dragした後の(targetViewからの相対)位置
     NSLog(@"移動距離py1=%f", p.y);//移動距離
+    
     CGPoint movedPoint = CGPointMake(targetView.center.x,
                                      targetView.center.y + p.y);//dragした後の絶対位置
     targetView.center = movedPoint;//dragした後の絶対位置にtargetViewを移す
@@ -106,25 +116,26 @@ double speed;
     if(sender.state == UIGestureRecognizerStateEnded)
     {
         //All fingers are lifted.
-        NSLog(@"touched up");
-        
-        speed = 0.5f;
+        NSLog(@"touched up at interval=%f", interval);
         
         //現在位置(タッチアップした位置)を検出してアニメーション実行
         //animation
-        [UIView animateWithDuration:0.2f
+        [UIView animateWithDuration:interval
+                              delay:0.0
+                             options:UIViewAnimationOptionCurveEaseIn//low->hight
                          animations:^{
                             targetView.center =
                              CGPointMake(targetView.center.x,
-                                         targetView.center.y - self.view.bounds.size.height);
+                                         -targetView.center.y/2);
                          }
                          completion:^(BOOL finished){
                              if(finished){
-//                                 if(targetView.tag == 1){//reset original location
-                                     targetView.frame = CGRectMake(100, 100, 150, 250);
-//                                 }else{
-//                                     
-//                                 }
+                                 targetView.frame = originalRect;
+                                 if(arc4random() % 5 == 0){
+                                     ((UIImageView *)targetView).image = [UIImage imageNamed:@"money_10th.png"];
+                                 }else{
+                                     ((UIImageView *)targetView).image = [UIImage imageNamed:@"money_1th.png"];
+                                 }
                              }
                          }];
     }
