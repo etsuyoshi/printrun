@@ -20,6 +20,8 @@
 @implementation GMMainViewController
 
 UIView *testView;
+UIView *originalView;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,6 +51,7 @@ UIView *testView;
     
     UIPanGestureRecognizer *panGest = [[UIPanGestureRecognizer alloc]
                                        initWithTarget:self action:@selector(drag:)];
+    panGest.delegate = self;
     [testView addGestureRecognizer:panGest];
     
 }
@@ -105,5 +108,19 @@ UIView *testView;
                          }];
     }
 }
+
+
+
+//first touch down
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+       shouldReceiveTouch:(UITouch *)touch{
+    
+    //タッチ時に変形させるなど
+    
+    NSLog(@"first touch down");
+    
+    return YES;
+}
+
 
 @end

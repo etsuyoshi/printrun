@@ -13,8 +13,6 @@
 		2A5CF0DF191DB3B10040A7E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A5CF0DD191DB3B10040A7E0 /* InfoPlist.strings */; };
 		2A5CF0E1191DB3B10040A7E0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5CF0E0191DB3B10040A7E0 /* main.m */; };
 		2A5CF0E5191DB3B10040A7E0 /* GMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5CF0E4191DB3B10040A7E0 /* GMAppDelegate.m */; };
-		2A5CF0EE191DB3B10040A7E0 /* GMMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5CF0ED191DB3B10040A7E0 /* GMMasterViewController.m */; };
-		2A5CF0F1191DB3B10040A7E0 /* GMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5CF0F0191DB3B10040A7E0 /* GMDetailViewController.m */; };
 		2A5CF0F3191DB3B10040A7E0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A5CF0F2191DB3B10040A7E0 /* Images.xcassets */; };
 		2A5CF0FA191DB3B10040A7E0 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5CF0F9191DB3B10040A7E0 /* XCTest.framework */; };
 		2A5CF0FB191DB3B10040A7E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5CF0D4191DB3B10040A7E0 /* Foundation.framework */; };
@@ -24,6 +22,7 @@
 		2A5CF111191DB43F0040A7E0 /* GMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5CF110191DB43F0040A7E0 /* GMMainViewController.m */; };
 		2A5CF115191DC0450040A7E0 /* money_1th.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A5CF113191DC0450040A7E0 /* money_1th.png */; };
 		2A5CF116191DC0450040A7E0 /* money_10th.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A5CF114191DC0450040A7E0 /* money_10th.png */; };
+		2A5CF118191DC46E0040A7E0 /* money_roll.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A5CF117191DC46E0040A7E0 /* money_roll.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,10 +46,6 @@
 		2A5CF0E2191DB3B10040A7E0 /* PrintRun-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PrintRun-Prefix.pch"; sourceTree = "<group>"; };
 		2A5CF0E3191DB3B10040A7E0 /* GMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMAppDelegate.h; sourceTree = "<group>"; };
 		2A5CF0E4191DB3B10040A7E0 /* GMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMAppDelegate.m; sourceTree = "<group>"; };
-		2A5CF0EC191DB3B10040A7E0 /* GMMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMMasterViewController.h; sourceTree = "<group>"; };
-		2A5CF0ED191DB3B10040A7E0 /* GMMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMMasterViewController.m; sourceTree = "<group>"; };
-		2A5CF0EF191DB3B10040A7E0 /* GMDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMDetailViewController.h; sourceTree = "<group>"; };
-		2A5CF0F0191DB3B10040A7E0 /* GMDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMDetailViewController.m; sourceTree = "<group>"; };
 		2A5CF0F2191DB3B10040A7E0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2A5CF0F8191DB3B10040A7E0 /* PrintRunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrintRunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A5CF0F9191DB3B10040A7E0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -61,6 +56,7 @@
 		2A5CF110191DB43F0040A7E0 /* GMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMMainViewController.m; sourceTree = "<group>"; };
 		2A5CF113191DC0450040A7E0 /* money_1th.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = money_1th.png; sourceTree = "<group>"; };
 		2A5CF114191DC0450040A7E0 /* money_10th.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = money_10th.png; sourceTree = "<group>"; };
+		2A5CF117191DC46E0040A7E0 /* money_roll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = money_roll.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,12 +118,8 @@
 			children = (
 				2A5CF0E3191DB3B10040A7E0 /* GMAppDelegate.h */,
 				2A5CF0E4191DB3B10040A7E0 /* GMAppDelegate.m */,
-				2A5CF0EC191DB3B10040A7E0 /* GMMasterViewController.h */,
-				2A5CF0ED191DB3B10040A7E0 /* GMMasterViewController.m */,
 				2A5CF10F191DB43F0040A7E0 /* GMMainViewController.h */,
 				2A5CF110191DB43F0040A7E0 /* GMMainViewController.m */,
-				2A5CF0EF191DB3B10040A7E0 /* GMDetailViewController.h */,
-				2A5CF0F0191DB3B10040A7E0 /* GMDetailViewController.m */,
 				2A5CF0F2191DB3B10040A7E0 /* Images.xcassets */,
 				2A5CF0DB191DB3B10040A7E0 /* Supporting Files */,
 			);
@@ -167,6 +159,7 @@
 		2A5CF112191DC0380040A7E0 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				2A5CF117191DC46E0040A7E0 /* money_roll.png */,
 				2A5CF113191DC0450040A7E0 /* money_1th.png */,
 				2A5CF114191DC0450040A7E0 /* money_10th.png */,
 			);
@@ -252,6 +245,7 @@
 			files = (
 				2A5CF0F3191DB3B10040A7E0 /* Images.xcassets in Resources */,
 				2A5CF116191DC0450040A7E0 /* money_10th.png in Resources */,
+				2A5CF118191DC46E0040A7E0 /* money_roll.png in Resources */,
 				2A5CF115191DC0450040A7E0 /* money_1th.png in Resources */,
 				2A5CF0DF191DB3B10040A7E0 /* InfoPlist.strings in Resources */,
 			);
@@ -273,8 +267,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A5CF111191DB43F0040A7E0 /* GMMainViewController.m in Sources */,
-				2A5CF0EE191DB3B10040A7E0 /* GMMasterViewController.m in Sources */,
-				2A5CF0F1191DB3B10040A7E0 /* GMDetailViewController.m in Sources */,
 				2A5CF0E5191DB3B10040A7E0 /* GMAppDelegate.m in Sources */,
 				2A5CF0E1191DB3B10040A7E0 /* main.m in Sources */,
 			);
