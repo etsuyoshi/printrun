@@ -19,8 +19,10 @@
 
 @implementation GMMainViewController
 
-UIView *testView;
+UIView *view1;
+UIView *view2;
 UIView *originalView;
+double speed;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -42,17 +44,32 @@ UIView *originalView;
     self.view.backgroundColor = [UIColor whiteColor];
     
     
-    
-    testView = [[UIView alloc]initWithFrame:CGRectMake(100, 100, 150, 250)];
-    testView.backgroundColor = [UIColor grayColor];
-    [self.view addSubview:testView];
-    
+    originalView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"money_roll.png"]];
+    originalView.frame = CGRectMake(100, 100, 150, 250);
+    [self.view addSubview:originalView];
     
     
-    UIPanGestureRecognizer *panGest = [[UIPanGestureRecognizer alloc]
+    
+    view1 = [[UIView alloc]initWithFrame:CGRectMake(100, 100, 150, 250)];
+    view1.backgroundColor = [UIColor grayColor];
+    view1.tag = 1;
+    [self.view addSubview:view1];
+    
+    view2 = [[UIView alloc]initWithFrame:CGRectMake(100, 100, 150, 250)];
+    view2.backgroundColor = [UIColor redColor];
+    view2.tag = 2;
+    [self.view addSubview:view2];
+    
+    
+    
+    UIPanGestureRecognizer *panGest1 = [[UIPanGestureRecognizer alloc]
                                        initWithTarget:self action:@selector(drag:)];
-    panGest.delegate = self;
-    [testView addGestureRecognizer:panGest];
+    panGest1.delegate = self;
+    [view1 addGestureRecognizer:panGest1];
+    UIPanGestureRecognizer *panGest2 = [[UIPanGestureRecognizer alloc]
+                                        initWithTarget:self action:@selector(drag:)];
+    panGest2.delegate = self;
+    [view2 addGestureRecognizer:panGest2];
     
 }
 
@@ -75,18 +92,11 @@ UIView *originalView;
 
 //http://ringsbell.blog117.fc2.com/blog-entry-714.html
 -(void)drag:(UIPanGestureRecognizer *)sender{
-//    UIView *targetView = sender.view;
-//    
-//    
-//    CGPoint p = [sender translationInView:targetView];//dragした後の(targetViewからの相対)位置
-//    CGPoint movedPoint = CGPointMake(targetView.center.x + p.x,
-//                                     targetView.center.y + p.y);//dragした後の絶対位置
-//    targetView.center = movedPoint;//dragした後の絶対位置にtargetViewを移す
-//    [sender setTranslation:CGPointZero inView:targetView];//targetViewの中心(メモリ)を現在位置にリセット
     
     //縦方向のみ移動
     UIView *targetView = sender.view;
     CGPoint p = [sender translationInView:targetView];//dragした後の(targetViewからの相対)位置
+    NSLog(@"移動距離py1=%f", p.y);//移動距離
     CGPoint movedPoint = CGPointMake(targetView.center.x,
                                      targetView.center.y + p.y);//dragした後の絶対位置
     targetView.center = movedPoint;//dragした後の絶対位置にtargetViewを移す
@@ -98,13 +108,24 @@ UIView *originalView;
         //All fingers are lifted.
         NSLog(@"touched up");
         
+        speed = 0.5f;
+        
         //現在位置(タッチアップした位置)を検出してアニメーション実行
         //animation
-        [UIView animateWithDuration:0.85f
+        [UIView animateWithDuration:0.2f
                          animations:^{
                             targetView.center =
                              CGPointMake(targetView.center.x,
                                          targetView.center.y - self.view.bounds.size.height);
+                         }
+                         completion:^(BOOL finished){
+                             if(finished){
+//                                 if(targetView.tag == 1){//reset original location
+                                     targetView.frame = CGRectMake(100, 100, 150, 250);
+//                                 }else{
+//                                     
+//                                 }
+                             }
                          }];
     }
 }
@@ -117,7 +138,7 @@ UIView *originalView;
     
     //タッチ時に変形させるなど
     
-    NSLog(@"first touch down");
+    NSLog(@"first touch down : %d", gestureRecognizer.view.tag);
     
     return YES;
 }
